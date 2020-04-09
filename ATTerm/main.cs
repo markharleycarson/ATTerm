@@ -1,4 +1,9 @@
-﻿using System;
+﻿// 
+// MHC
+//  https://github.com/markharleycarson/ATTerm 
+// 20200409
+//
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,6 +32,8 @@ namespace ATTerm
             InitializeComponent();
 
             ports = SerialPort.GetPortNames();     // ports list
+            cmbBaud.Items.Add(1200);
+            cmbBaud.Items.Add(4800);
             cmbBaud.Items.Add(9600);               // baud rates
             cmbBaud.Items.Add(19200);
             cmbBaud.Items.Add(38400);
