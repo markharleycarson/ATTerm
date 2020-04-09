@@ -19,6 +19,8 @@ namespace ATTerm
         SerialPort serialPort1;
         // delegate is used to write to a UI control from a non-UI thread  
         private delegate void SetTextDeleg(string text);
+        bool bolConnected = false;
+
         public Form1()
         {
 
@@ -50,7 +52,7 @@ namespace ATTerm
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("          AT GSM Application        " + Environment.NewLine +
+            MessageBox.Show("          AT GSM Test Application        " + Environment.NewLine +
                "             version: 1.0.0.10         " + Environment.NewLine +
                "          MH Carson       " + Environment.NewLine +
                "" + Environment.NewLine +
@@ -64,6 +66,7 @@ namespace ATTerm
         {
             if (serialPort1.IsOpen == true)
             {
+                bolConnected = false;
                 serialPort1.Close();
             }
             Close();
@@ -87,12 +90,14 @@ namespace ATTerm
                     serialPort1.WriteTimeout = 2000;
 
                     serialPort1.Open();
+                    bolConnected = true;
 
                     btnDisconnect.Text = "Disconnect";
                 }
                 else
                 {
                     serialPort1.Close();
+                    bolConnected = false;
                     btnDisconnect.Text = "Connect";
                 }
             }
@@ -100,6 +105,7 @@ namespace ATTerm
             {
                 MessageBox.Show(ex.Message);
                 serialPort1.Close();
+                bolConnected = false;
                 btnDisconnect.Text = "Connect";
             }
         }
@@ -130,6 +136,10 @@ namespace ATTerm
         {
             Button button;
             if (serialPort1 == null)
+            {
+                return;
+            }
+            if (!bolConnected)
             {
                 return;
             }
@@ -217,7 +227,7 @@ namespace ATTerm
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(openFileDialog1.FileName.ToString());
+                //MessageBox.Show(openFileDialog1.FileName.ToString());
                 txtScript.Text = "";
                 try
                 {
@@ -228,6 +238,7 @@ namespace ATTerm
                             String line = sr.ReadToEnd();
                             txtScript.Text = line;
                         }
+                        tabControl1.SelectedTab = this.tabScripts;
                     }
                 }
                 catch (Exception ex)
@@ -241,6 +252,14 @@ namespace ATTerm
         {
             int intCurLine = 0;
             string strCurrentLine = "";
+            if (serialPort1 == null)
+            {
+                return;
+            }
+            if (!bolConnected)
+            {
+                return;
+            }
             // parse script and run
             try
             {
@@ -271,9 +290,9 @@ namespace ATTerm
                 }
             }
 
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show("Error: problem running script." + ex.Message);
             }
         }
     }
