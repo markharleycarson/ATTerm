@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,10 +69,13 @@
             this.txtAT = new System.Windows.Forms.TextBox();
             this.btnAT = new System.Windows.Forms.Button();
             this.tabScripts = new System.Windows.Forms.TabPage();
+            this.chkPauseStep = new System.Windows.Forms.CheckBox();
             this.chkSleepScript = new System.Windows.Forms.CheckBox();
             this.btnRunScript = new System.Windows.Forms.Button();
             this.txtScript = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -112,19 +116,21 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(162, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.openToolStripMenuItem.Text = "Open Script";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(162, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.testToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.helpToolStripMenuItem.Text = "Help";
@@ -149,6 +155,7 @@
             this.cmbBaud.Name = "cmbBaud";
             this.cmbBaud.Size = new System.Drawing.Size(121, 24);
             this.cmbBaud.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.cmbBaud, "connection baud rate ");
             // 
             // btnDisconnect
             // 
@@ -157,6 +164,7 @@
             this.btnDisconnect.Size = new System.Drawing.Size(101, 23);
             this.btnDisconnect.TabIndex = 1;
             this.btnDisconnect.Text = "Connect";
+            this.toolTip1.SetToolTip(this.btnDisconnect, "Serial Port connect/disconnect");
             this.btnDisconnect.UseVisualStyleBackColor = true;
             this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
@@ -167,10 +175,11 @@
             this.cmbPort.Name = "cmbPort";
             this.cmbPort.Size = new System.Drawing.Size(121, 24);
             this.cmbPort.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.cmbPort, "Com port used");
             // 
             // txtResults
             // 
-            this.txtResults.Location = new System.Drawing.Point(596, 32);
+            this.txtResults.Location = new System.Drawing.Point(610, 31);
             this.txtResults.Multiline = true;
             this.txtResults.Name = "txtResults";
             this.txtResults.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -180,7 +189,7 @@
             // txtResultsHex
             // 
             this.txtResultsHex.Font = new System.Drawing.Font("Arial", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResultsHex.Location = new System.Drawing.Point(596, 535);
+            this.txtResultsHex.Location = new System.Drawing.Point(610, 535);
             this.txtResultsHex.Multiline = true;
             this.txtResultsHex.Name = "txtResultsHex";
             this.txtResultsHex.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -190,7 +199,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(548, 12);
+            this.label1.Location = new System.Drawing.Point(595, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 17);
             this.label1.TabIndex = 5;
@@ -199,7 +208,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(548, 515);
+            this.label2.Location = new System.Drawing.Point(595, 515);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 17);
             this.label2.TabIndex = 6;
@@ -285,6 +294,7 @@
             this.txtPower.Size = new System.Drawing.Size(254, 22);
             this.txtPower.TabIndex = 51;
             this.txtPower.Text = "AT+CPOWD=1";
+            this.toolTip1.SetToolTip(this.txtPower, "AT command to execute");
             // 
             // btnPower
             // 
@@ -293,6 +303,7 @@
             this.btnPower.Size = new System.Drawing.Size(75, 23);
             this.btnPower.TabIndex = 50;
             this.btnPower.Text = "Power Off";
+            this.toolTip1.SetToolTip(this.btnPower, "Execute command");
             this.btnPower.UseVisualStyleBackColor = true;
             this.btnPower.Click += new System.EventHandler(this.btnAT_Click);
             // 
@@ -303,6 +314,7 @@
             this.txtSave.Size = new System.Drawing.Size(254, 22);
             this.txtSave.TabIndex = 49;
             this.txtSave.Text = "AT&W";
+            this.toolTip1.SetToolTip(this.txtSave, "AT command to execute");
             // 
             // btnSave
             // 
@@ -311,6 +323,7 @@
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 48;
             this.btnSave.Text = "Save";
+            this.toolTip1.SetToolTip(this.btnSave, "Execute command");
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnAT_Click);
             // 
@@ -321,6 +334,7 @@
             this.txtReset.Size = new System.Drawing.Size(254, 22);
             this.txtReset.TabIndex = 47;
             this.txtReset.Text = "AT&F";
+            this.toolTip1.SetToolTip(this.txtReset, "AT command to execute");
             // 
             // btnReset
             // 
@@ -329,6 +343,7 @@
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 46;
             this.btnReset.Text = "Reset";
+            this.toolTip1.SetToolTip(this.btnReset, "Execute command");
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnAT_Click);
             // 
@@ -339,6 +354,7 @@
             this.txtFW.Size = new System.Drawing.Size(254, 22);
             this.txtFW.TabIndex = 45;
             this.txtFW.Text = "AT+GSV";
+            this.toolTip1.SetToolTip(this.txtFW, "AT command to execute");
             // 
             // txtHW
             // 
@@ -347,6 +363,7 @@
             this.txtHW.Size = new System.Drawing.Size(254, 22);
             this.txtHW.TabIndex = 44;
             this.txtHW.Text = "AT+GMR";
+            this.toolTip1.SetToolTip(this.txtHW, "AT command to execute");
             // 
             // txtInfo
             // 
@@ -355,6 +372,7 @@
             this.txtInfo.Size = new System.Drawing.Size(254, 22);
             this.txtInfo.TabIndex = 43;
             this.txtInfo.Text = "ATI";
+            this.toolTip1.SetToolTip(this.txtInfo, "AT command to execute");
             // 
             // btnVersions
             // 
@@ -363,6 +381,7 @@
             this.btnVersions.Size = new System.Drawing.Size(75, 23);
             this.btnVersions.TabIndex = 42;
             this.btnVersions.Text = "Versions";
+            this.toolTip1.SetToolTip(this.btnVersions, "Execute command");
             this.btnVersions.UseVisualStyleBackColor = true;
             this.btnVersions.Click += new System.EventHandler(this.btnAT_Click);
             // 
@@ -394,6 +413,7 @@
             this.txtSendCmd.Size = new System.Drawing.Size(254, 39);
             this.txtSendCmd.TabIndex = 39;
             this.txtSendCmd.Text = "AT";
+            this.toolTip1.SetToolTip(this.txtSendCmd, "AT command to execute");
             // 
             // btnSendCmd
             // 
@@ -402,6 +422,7 @@
             this.btnSendCmd.Size = new System.Drawing.Size(87, 42);
             this.btnSendCmd.TabIndex = 38;
             this.btnSendCmd.Text = "Send Command";
+            this.toolTip1.SetToolTip(this.btnSendCmd, "Execute command");
             this.btnSendCmd.UseVisualStyleBackColor = true;
             this.btnSendCmd.Click += new System.EventHandler(this.btnAT_Click);
             // 
@@ -412,6 +433,7 @@
             this.txtNetwork.Size = new System.Drawing.Size(254, 22);
             this.txtNetwork.TabIndex = 37;
             this.txtNetwork.Text = "AT+CREG?";
+            this.toolTip1.SetToolTip(this.txtNetwork, "AT command to execute");
             // 
             // btnNetwork
             // 
@@ -420,6 +442,7 @@
             this.btnNetwork.Size = new System.Drawing.Size(75, 23);
             this.btnNetwork.TabIndex = 36;
             this.btnNetwork.Text = "Network";
+            this.toolTip1.SetToolTip(this.btnNetwork, "Execute command");
             this.btnNetwork.UseVisualStyleBackColor = true;
             this.btnNetwork.Click += new System.EventHandler(this.btnAT_Click);
             // 
@@ -430,6 +453,7 @@
             this.txtSignal.Size = new System.Drawing.Size(254, 22);
             this.txtSignal.TabIndex = 35;
             this.txtSignal.Text = "AT+CSQ";
+            this.toolTip1.SetToolTip(this.txtSignal, "AT command to execute");
             // 
             // btnSignal
             // 
@@ -438,6 +462,7 @@
             this.btnSignal.Size = new System.Drawing.Size(75, 23);
             this.btnSignal.TabIndex = 34;
             this.btnSignal.Text = "Signal";
+            this.toolTip1.SetToolTip(this.btnSignal, "Execute command");
             this.btnSignal.UseVisualStyleBackColor = true;
             this.btnSignal.Click += new System.EventHandler(this.btnAT_Click);
             // 
@@ -448,6 +473,7 @@
             this.txtAT.Size = new System.Drawing.Size(254, 22);
             this.txtAT.TabIndex = 33;
             this.txtAT.Text = "AT";
+            this.toolTip1.SetToolTip(this.txtAT, "AT command to execute");
             // 
             // btnAT
             // 
@@ -456,11 +482,13 @@
             this.btnAT.Size = new System.Drawing.Size(75, 23);
             this.btnAT.TabIndex = 32;
             this.btnAT.Text = "AT";
+            this.toolTip1.SetToolTip(this.btnAT, "Execute command");
             this.btnAT.UseVisualStyleBackColor = true;
             this.btnAT.Click += new System.EventHandler(this.btnAT_Click);
             // 
             // tabScripts
             // 
+            this.tabScripts.Controls.Add(this.chkPauseStep);
             this.tabScripts.Controls.Add(this.chkSleepScript);
             this.tabScripts.Controls.Add(this.btnRunScript);
             this.tabScripts.Controls.Add(this.txtScript);
@@ -472,17 +500,30 @@
             this.tabScripts.Text = "Script";
             this.tabScripts.UseVisualStyleBackColor = true;
             // 
+            // chkPauseStep
+            // 
+            this.chkPauseStep.AutoSize = true;
+            this.chkPauseStep.Location = new System.Drawing.Point(383, 65);
+            this.chkPauseStep.Name = "chkPauseStep";
+            this.chkPauseStep.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.chkPauseStep.Size = new System.Drawing.Size(121, 21);
+            this.chkPauseStep.TabIndex = 8;
+            this.chkPauseStep.Text = "Pause @ Step";
+            this.toolTip1.SetToolTip(this.chkPauseStep, "Stop after each command step");
+            this.chkPauseStep.UseVisualStyleBackColor = true;
+            // 
             // chkSleepScript
             // 
             this.chkSleepScript.AutoSize = true;
             this.chkSleepScript.Checked = true;
             this.chkSleepScript.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkSleepScript.Location = new System.Drawing.Point(401, 22);
+            this.chkSleepScript.Location = new System.Drawing.Point(383, 20);
             this.chkSleepScript.Name = "chkSleepScript";
             this.chkSleepScript.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkSleepScript.Size = new System.Drawing.Size(106, 21);
             this.chkSleepScript.TabIndex = 7;
             this.chkSleepScript.Text = "Sleep Script";
+            this.toolTip1.SetToolTip(this.chkSleepScript, "Pause using default timer 500ms after each step");
             this.chkSleepScript.UseVisualStyleBackColor = true;
             // 
             // btnRunScript
@@ -492,6 +533,7 @@
             this.btnRunScript.Size = new System.Drawing.Size(75, 23);
             this.btnRunScript.TabIndex = 6;
             this.btnRunScript.Text = "Run Script";
+            this.toolTip1.SetToolTip(this.btnRunScript, "Execute the loaded script");
             this.btnRunScript.UseVisualStyleBackColor = true;
             this.btnRunScript.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -509,6 +551,13 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.testToolStripMenuItem.Text = "Test";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -525,6 +574,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "AT Command Application";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -584,6 +634,9 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnRunScript;
         private System.Windows.Forms.CheckBox chkSleepScript;
+        private System.Windows.Forms.CheckBox chkPauseStep;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
     }
 }
 

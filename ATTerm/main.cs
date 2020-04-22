@@ -1,6 +1,8 @@
 ﻿// 
 // MHC
 //  https://github.com/markharleycarson/ATTerm 
+//  https://github.com/markharleycarson/ATTerm 
+//  https://github.com/markharleycarson/ATTerm 
 // 20200409
 //
 using System;
@@ -59,23 +61,11 @@ namespace ATTerm
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("          AT GSM Test Application        " + Environment.NewLine +
-               "             version: 1.0.0.10         " + Environment.NewLine +
-               "          MH Carson       " + Environment.NewLine +
-               "" + Environment.NewLine +
-               " Donations and Assistance: https://ko-fi.com/markcarson" + Environment.NewLine +
-               " https://github.com/markharleycarson/ATTerm " + Environment.NewLine +
-               "  (based on original idea https://github.com/oakkar7 and ATCommand?) "
-               );
+
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (serialPort1.IsOpen == true)
-            {
-                bolConnected = false;
-                serialPort1.Close();
-            }
             Close();
         
         }
@@ -84,6 +74,16 @@ namespace ATTerm
         {
             try
             {
+                if (cmbPort.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Error: No port selected, try again.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (cmbBaud.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Error: No baud rate selected, try again.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (btnDisconnect.Text == "Connect")
                 {
                     serialPort1 = new SerialPort(cmbPort.Text, Convert.ToInt32(cmbBaud.Text));
@@ -144,10 +144,12 @@ namespace ATTerm
             Button button;
             if (serialPort1 == null)
             {
+                MessageBox.Show("Error: port not connected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (!bolConnected)
             {
+                MessageBox.Show("Error: port not connected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             string strRes = sender.GetType().Name;
@@ -261,10 +263,12 @@ namespace ATTerm
             string strCurrentLine = "";
             if (serialPort1 == null)
             {
+                MessageBox.Show("Error: port not connected.","Error.",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
             if (!bolConnected)
             {
+                MessageBox.Show("Error: port not connected.", "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             // parse script and run
@@ -291,16 +295,40 @@ namespace ATTerm
                     if (chkSleepScript.Checked)
                     {
                         Application.DoEvents();
-                        Thread.Sleep(500);
+                        if (chkSleepScript.Checked)
+                        {
+                            Thread.Sleep(500);
+                        }
+                        if (chkPauseStep.Checked)
+                        {
+                            MessageBox.Show("Pause: Click Ok to continue.","Pause during execute...", MessageBoxButtons.OK);
+                        }
                         Application.DoEvents();
                     }
                 }
             }
-
             catch (Exception ex)
-            {
-                MessageBox.Show("Error: problem running script." + ex.Message);
+            {                
+                MessageBox.Show("Error: problem running script." + ex.Message, "Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (serialPort1 != null)
+            {
+                if (serialPort1.IsOpen == true)
+                {
+                    bolConnected = false;
+                    serialPort1.Close();
+                }
+            }
+        }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAbout f3 = new frmAbout(); // Instantiate a Form3 object.
+            f3.Show(); // Show Form3 and
         }
     }
 }
