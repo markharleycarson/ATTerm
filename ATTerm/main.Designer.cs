@@ -35,6 +35,7 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbBaud = new System.Windows.Forms.ComboBox();
             this.btnDisconnect = new System.Windows.Forms.Button();
@@ -75,7 +76,6 @@
             this.txtScript = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -110,20 +110,20 @@
             this.openToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
             this.openToolStripMenuItem.Text = "Open Script";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -132,9 +132,16 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.testToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(118, 26);
+            this.testToolStripMenuItem.Text = "Test";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -179,7 +186,7 @@
             // 
             // txtResults
             // 
-            this.txtResults.Location = new System.Drawing.Point(610, 31);
+            this.txtResults.Location = new System.Drawing.Point(590, 32);
             this.txtResults.Multiline = true;
             this.txtResults.Name = "txtResults";
             this.txtResults.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -189,7 +196,7 @@
             // txtResultsHex
             // 
             this.txtResultsHex.Font = new System.Drawing.Font("Arial", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResultsHex.Location = new System.Drawing.Point(610, 535);
+            this.txtResultsHex.Location = new System.Drawing.Point(590, 536);
             this.txtResultsHex.Multiline = true;
             this.txtResultsHex.Name = "txtResultsHex";
             this.txtResultsHex.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -199,7 +206,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(595, 9);
+            this.label1.Location = new System.Drawing.Point(575, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 17);
             this.label1.TabIndex = 5;
@@ -208,7 +215,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(595, 515);
+            this.label2.Location = new System.Drawing.Point(575, 516);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 17);
             this.label2.TabIndex = 6;
@@ -550,13 +557,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // testToolStripMenuItem
-            // 
-            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.testToolStripMenuItem.Text = "Test";
-            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
             // Form1
             // 
